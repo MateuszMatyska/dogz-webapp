@@ -1,26 +1,32 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import AppStack from './src/navigation/AppStack';
+import {navigationRef} from './src/navigation/NavigationService';
 
 const App = () => {
+  const config = {
+    screens: {
+      Home: '/',
+      Favourites: 'favourites',
+    },
+  };
+
+  const linking = {
+    prefixes: [
+      'https://dogz.com',
+      'dogz://',
+      'http://localhost:8080/',
+      'http://localhost:8080',
+      'localhost:8080',
+    ],
+    config,
+  };
+
   return (
-    <SafeAreaView style={styles.container}>
-      <View>
-        <Text style={styles.title}>React Native App</Text>
-      </View>
-    </SafeAreaView>
+    <NavigationContainer ref={navigationRef} linking={linking}>
+      <AppStack />
+    </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  title: {
-    color: '#000000',
-    fontSize: 28,
-  },
-});
 
 export default App;

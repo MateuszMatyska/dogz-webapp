@@ -65,6 +65,10 @@ const config = {
     extensions: ['.web.tsx', '.web.ts', '.web.js', '.tsx', '.ts', '.js'],
   },
   ignoreWarnings: [/Should not import the named export/],
+  devServer: {
+    port: 3000,
+    historyApiFallback: true,
+  },
 };
 
 module.exports = config;
