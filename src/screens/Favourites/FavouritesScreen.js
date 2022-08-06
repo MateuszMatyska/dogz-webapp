@@ -1,14 +1,13 @@
 import React from 'react';
-import {SafeAreaView, View, Text} from 'react-native';
-import {styles} from './FavouritesScreen.style';
+import {Platform} from 'react-native';
+import FavouritesScreenWeb from './FavouritesWeb/FavouritesScreen.web';
+import FavouritesScreenMobile from './FavouritesMobile/FavouritesScreen.mobile';
 
 const FavouritesScreen = () => {
-  return (
-    <SafeAreaView style={styles.container}>
-      <View>
-        <Text style={styles.title}>Favourites Screen</Text>
-      </View>
-    </SafeAreaView>
+  return Platform.OS === 'web' ? (
+    <FavouritesScreenWeb />
+  ) : (
+    <FavouritesScreenMobile />
   );
 };
 

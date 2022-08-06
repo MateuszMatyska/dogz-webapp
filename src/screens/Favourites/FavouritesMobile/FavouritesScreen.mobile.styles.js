@@ -10,4 +10,17 @@ export const styles = StyleSheet.create({
     color: '#000000',
     fontSize: 28,
   },
+  dogWrapper: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  dogText: {
+    color: '#000000',
+    fontSize: 20,
+  },
+  list: {
+    marginTop: 15,
+  },
 });

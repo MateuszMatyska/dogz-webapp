@@ -2,6 +2,9 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import AppStack from './src/navigation/AppStack';
 import {navigationRef} from './src/navigation/NavigationService';
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
+import {store, persistor} from './src/store/Store';
 
 const App = () => {
   const config = {
@@ -12,19 +15,17 @@ const App = () => {
   };
 
   const linking = {
-    prefixes: [
-      'https://dogz.com',
-      'dogz://',
-      'http://localhost:8080/',
-      'http://localhost:8080',
-      'localhost:8080',
-    ],
+    prefixes: ['https://dogz.com', 'dogz://'],
     config,
   };
 
   return (
     <NavigationContainer ref={navigationRef} linking={linking}>
-      <AppStack />
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <AppStack />
+        </PersistGate>
+      </Provider>
     </NavigationContainer>
   );
 };
